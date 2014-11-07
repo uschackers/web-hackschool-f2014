@@ -27,6 +27,57 @@ body {
   vertical-align: middle;
 }
 
+button {
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #4774E8; color: white;
+}
+
+button:hover {
+  background: #416AD4;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  padding: 0 6px;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* Modify */
+/* ----------------------------------------------------- */
+.modify {
+  width: 100%;
+  margin-top: 20px; padding: 5px;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.addlist {
+  padding: 10px;
+}
+
+.addlist>label {
+  margin-right: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.addlist>input {
+  width: 280px; height: 30px;
+  vertical-align: middle;
+}
+
+.addlist>button {
+  width: 80px; height: 32px;
+}
+
+
 /* ToDo */
 /* ----------------------------------------------------- */
 .todo {
@@ -48,6 +99,14 @@ body {
   background: white;
 }
 
+.list:hover {
+  cursor: pointer;
+}
+
+.list.selected {
+  font-weight: bold;
+}
+
 .list>.name {
   float: left;
 }
@@ -61,6 +120,11 @@ body {
   text-align: center;
 }
 
+.list>.close:hover {
+  color: #E11931;
+  cursor: pointer;
+}
+
 /* Tasks */
 .tasks {
   width: 320px; height: 100%;
@@ -69,12 +133,16 @@ body {
   border-radius: 0 3px 3px 0;
   box-sizing: border-box;
   background: #FFF;
+  overflow: scroll;
 }
 
 .task {
-  width: 305px; height: 40px;
-  border-bottom: 1px solid #DDD;
+  width: 295px; height: 40px;
   box-sizing: border-box;
+}
+
+.task:hover {
+  background: #FAFAFA;
 }
 
 .task .name {
@@ -82,8 +150,8 @@ body {
 }
 
 .task .complete {
-  height: 100%; width: 20px;
-  margin: 0;
+  height: 100%;
+  margin: 0 10px 0 0;
   float: right;
 }
 
@@ -99,24 +167,9 @@ body {
 
 .addtask>input {
   width: 200px; height: 30px;
-  padding: 0 6px;
-  display: inline-block;
-  border: 1px solid #CCC;
-  border-radius: 3px;
-  font-size: 16px;
   vertical-align: middle;
 }
 
 .addtask>button {
   width: 80px; height: 32px;
-  display: inline-block;
-  border: none;
-  border-radius: 3px;
-  font-size: 12px;
-  font-weight: bold;
-  background: #4774E8; color: white;
 }
-
-
-
-/* Modify */
