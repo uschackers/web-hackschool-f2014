@@ -1,5 +1,6 @@
-/* General */
+/* Layout */
 /* ----------------------------------------------------- */
+/* General */
 body {
   min-width: 740px;
   margin: 0; padding: 0;
@@ -19,6 +20,55 @@ body {
   top: 20px; left: 20px;
 }
 
+/* Modify */
+.modify {
+  width: 100%;
+  margin-top: 20px; padding: 5px;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+/* ToDo */
+.todo {
+  width: 500px; height: 460px;
+  margin: 20px 0 20px 0;
+}
+
+.lists {
+  width: 180px; height: 100%;
+  float: left;
+  border-radius: 3px 0 0 3px;
+  box-sizing: border-box;
+  background: #4774E8;
+  overflow: hidden;
+}
+
+.tasks {
+  width: 320px; height: 100%;
+  padding-bottom: 46px;
+  float: right;
+  border: 1px solid #4774E8;
+  border-radius: 0 3px 3px 0;
+  box-sizing: border-box;
+  background: #FFF;
+  overflow: scroll;
+}
+
+/* Other */
+ul {
+  margin: 0; padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* ========================= COPY EVERYTHING BELOW THIS LINE ========================= */
+
+
+/* Elements */
+/* ----------------------------------------------------- */
 .item {
   height: 40px;
   margin: 5px 5px 0 5px; padding: 0 0 0 15px;
@@ -47,24 +97,8 @@ input[type="text"] {
   font-size: 16px;
 }
 
-ul {
-  margin: 0; padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
 /* Modify */
 /* ----------------------------------------------------- */
-.modify {
-  width: 100%;
-  margin-top: 20px; padding: 5px;
-  border: 1px solid #DDD;
-  border-radius: 3px;
-  box-sizing: border-box;
-}
-
 .addlist {
   padding: 10px;
 }
@@ -85,24 +119,9 @@ li {
   width: 80px; height: 32px;
 }
 
-
 /* ToDo */
 /* ----------------------------------------------------- */
-.todo {
-  width: 500px; height: 460px;
-  margin: 20px 0 20px 0;
-}
-
 /* Lists */
-.lists {
-  width: 180px; height: 100%;
-  float: left;
-  border-radius: 3px 0 0 3px;
-  box-sizing: border-box;
-  background: #4774E8;
-  overflow: hidden;
-}
-
 .list {
   width: 155px;
   background: white;
@@ -138,17 +157,6 @@ li {
 }
 
 /* Tasks */
-.tasks {
-  width: 320px; height: 100%;
-  padding-bottom: 46px;
-  float: right;
-  border: 1px solid #4774E8;
-  border-radius: 0 3px 3px 0;
-  box-sizing: border-box;
-  background: #FFF;
-  overflow: scroll;
-}
-
 .task {
   width: 294px; height: 40px;
   box-sizing: border-box;
