@@ -6,11 +6,11 @@ threadsafe: yes
 
 handlers:
 - url: /favicon\.ico
-  public_files: /public/favicon.ico
+  static_files: /public/favicon.ico
   upload: favicon\.ico
 
 - url: /public
-  public_dir: public
+  static_dir: public
 
 - url: .*
   script: main.app
