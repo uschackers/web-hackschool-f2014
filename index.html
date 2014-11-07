@@ -14,11 +14,11 @@
             <div class="name">List 1</div>
             <div class="close">&times;</div>
           </div>
-          <div class="list">
+          <div class="item list">
             <div class="name">List 2</div>
             <div class="close">&times;</div>
           </div>
-          <div class="list">
+          <div class="item list">
             <div class="name">List 3</div>
             <div class="close">&times;</div>
           </div>
@@ -26,6 +26,14 @@
         <section class="tasks">
           <div class="item task">
             <div class="name">This is a task.</div>
+            <input type="checkbox" class="complete">
+          </div>
+          <div class="item task">
+            <div class="name">This is another task.</div>
+            <input type="checkbox" class="complete">
+          </div>
+          <div class="item task">
+            <div class="name">This is yet another task.</div>
             <input type="checkbox" class="complete">
           </div>
           <section class="addtask">
@@ -37,7 +45,11 @@
     </div>
     <div class="container">
       <section class="modify">
-        <div class="addlist"></div>
+        <div class="addlist">
+          <label>New List:</label>
+          <input type="text">
+          <button>Add List</button>
+        </div>
       </section>
     </div>
   </body>

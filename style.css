@@ -19,6 +19,14 @@ body {
   top: 20px; left: 20px;
 }
 
+.item {
+  height: 40px;
+  margin: 5px 5px 0 5px; padding: 0 0 0 15px;
+  border-radius: 3px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
 /* ToDo */
 /* ----------------------------------------------------- */
 .todo {
@@ -32,14 +40,11 @@ body {
   float: left;
   border-radius: 3px 0 0 3px;
   background: #4774E8;
+  overflow: hidden;
 }
 
 .list {
-  width: 155px; height: 40px;
-  margin: 5px 5px 0 5px; padding: 0 0 0 15px;
-  border-radius: 3px;
-  line-height: 40px;
-  vertical-align: middle;
+  width: 155px;
   background: white;
 }
 
@@ -67,10 +72,9 @@ body {
 }
 
 .task {
-  width: 100%; height: 40px;
-  padding: 0 10px 0 10px;
-  line-height: 40px;
-  vertical-align: middle;
+  width: 294px; height: 40px;
+  border-bottom: 1px solid #DDD;
+  box-sizing: border-box;
 }
 
 .task .name {
