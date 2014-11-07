@@ -109,7 +109,10 @@ input[type="text"] {
 }
 
 .list>.name {
-  float: left;
+  width: 114px;
+  padding-left: 15px;
+  position: absolute;
+  left: 5px;
 }
 
 .list>.close {

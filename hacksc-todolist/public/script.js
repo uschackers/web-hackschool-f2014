@@ -5,7 +5,7 @@ var List = function(listName, listID, container) {
     el: container,
     children: [],
     initialize: function() {
-      
+
     },
     render: function() {
       $(container).append('<div class="item list" id="list_' + this.id + '"><div class="name">' + this.name + '</div><div class="close">&times;</div></div>');
@@ -45,7 +45,7 @@ var ListItem = function(listItemName, listItemID, parentID, taskCompleted, conta
     completed: taskCompleted,
     el: container,
     initialize: function() {
-      
+
     },
     render: function() {
       $(container).append('<div class="item task" id="task_' + this.id + '"><div class="name">' + this.name + '</div><input type="checkbox" class="complete"></div>');
