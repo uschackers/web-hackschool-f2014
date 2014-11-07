@@ -1,0 +1,117 @@
+/* General */
+/* ----------------------------------------------------- */
+body {
+  min-width: 740px;
+  margin: 0; padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+
+.logo {
+  width: 64px; height: 64px;
+  position: absolute;
+  top: 20px; left: 20px;
+}
+
+/* ToDo */
+/* ----------------------------------------------------- */
+.todo {
+  width: 500px; height: 460px;
+  margin: 20px 0 20px 0;
+}
+
+/* Lists */
+.lists {
+  width: 180px; height: 100%;
+  float: left;
+  border-radius: 3px 0 0 3px;
+  background: #4774E8;
+}
+
+.list {
+  width: 155px; height: 40px;
+  margin: 5px 5px 0 5px; padding: 0 0 0 15px;
+  border-radius: 3px;
+  line-height: 40px;
+  vertical-align: middle;
+  background: white;
+}
+
+.list>.name {
+  float: left;
+}
+
+.list>.close {
+  width: 40px; height: 100%;
+  float: right;
+  border-left: 1px solid #DDD;
+  border-radius: 0 3px 3px 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Tasks */
+.tasks {
+  width: 320px; height: 100%;
+  float: right;
+  border: 1px solid #4774E8;
+  border-radius: 0 3px 3px 0;
+  box-sizing: border-box;
+  background: #FFF;
+}
+
+.task {
+  width: 100%; height: 40px;
+  padding: 0 10px 0 10px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.task .name {
+  float: left;
+}
+
+/* .task .complete {
+  display: inline;
+  float: right;
+} */
+
+.addtask {
+  width: 308px; height: 46px;
+  padding: 0 0 0 10px;
+  position: absolute;
+  bottom: 1px;
+  border-radius: 0 0 3px 0;
+  line-height: 46px;
+  background: #EEE;
+}
+
+.addtask>input {
+  width: 200px; height: 30px;
+  padding: 0 6px;
+  display: inline-block;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.addtask>button {
+  width: 80px; height: 32px;
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #4774E8; color: white;
+}
+
+
+
+/* Modify */
