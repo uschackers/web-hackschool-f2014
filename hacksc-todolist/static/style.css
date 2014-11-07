@@ -90,6 +90,7 @@ input[type="text"] {
   width: 180px; height: 100%;
   float: left;
   border-radius: 3px 0 0 3px;
+  box-sizing: border-box;
   background: #4774E8;
   overflow: hidden;
 }
@@ -128,6 +129,7 @@ input[type="text"] {
 /* Tasks */
 .tasks {
   width: 320px; height: 100%;
+  padding-bottom: 46px;
   float: right;
   border: 1px solid #4774E8;
   border-radius: 0 3px 3px 0;
@@ -137,7 +139,7 @@ input[type="text"] {
 }
 
 .task {
-  width: 295px; height: 40px;
+  width: 294px; height: 40px;
   box-sizing: border-box;
 }
 
