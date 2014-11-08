@@ -40,7 +40,7 @@ var List = function(listName, listID, container) {
         });
       })
     },
-    refreshChildren: function(force, onLoad) {
+    refreshChildren: function() {
       var self = this;
       self.children = [];
       $.get( "/lists/" + this.id, function(data) {
