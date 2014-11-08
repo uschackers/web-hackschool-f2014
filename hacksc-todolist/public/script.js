@@ -24,7 +24,7 @@ var List = function(listName, listID, container) {
           selectedList.unrenderChildren()
         }
         selectedList = that;
-        selectedList.renderChildren(false, false);
+        selectedList.renderChildren();
       })
       $('#list_' + this.id + ' .close').click(function(e) {
         if(selectedList === $('#list_' + that.id)) {
@@ -40,24 +40,26 @@ var List = function(listName, listID, container) {
         });
       })
     },
-    renderChildren: function(force, onLoad) {
-      var that = this;
-      this.unrenderChildren();
-      if(force || this.children.length === 0) {
-        $.get( "/lists/" + this.id, function(data) {
-          for(var childIndex in data) {
+    refreshChildren: function(force, onLoad) {
+      var self = this;
+      self.children = [];
+      $.get( "/lists/" + this.id, function(data) {
+        for(var childIndex in data) {
           var childData = data[childIndex];
           var thisChild = new ListItem(childData.title, childData.id, childData.list_id, childData.complete, '.tasks');
-          console.log(thisChild);
-          that.children.push(thisChild);
+          self.children.push(thisChild);
         }
-        });
+      });
+    },
+    renderChildren: function() {
+      this.unrenderChildren();
+      for(var childIndex in this.children) {
+        this.children[childIndex].render();
       }
-      if(!onLoad) {
-        for(var childIndex in this.children) {
-          this.children[childIndex].render();
-        }
-      }
+    },
+
+    addChild: function(newTask) {
+      this.children.push(newTask);
     },
     unrenderChildren: function() {
       for(var childIndex in this.children) {
@@ -90,7 +92,6 @@ var ListItem = function(listItemName, listItemID, parentID, taskCompleted, conta
     setUpHandlers: function() {
       var that = this;
       $('#task_' + this.id + ' .complete').click(function() {
-        console.log('here');
         var checked = $('#task_' + that.id + ' .complete').is(':checked');
         if(that.complete != checked) {
           that.setCompleted(checked);
@@ -108,7 +109,6 @@ var ListItem = function(listItemName, listItemID, parentID, taskCompleted, conta
         data: { taskTitle: this.name, taskComplete: checked }, 
         success: function(res) {
           that.completed = checked;
-          console.log(that);
         }
       });
     }
@@ -123,9 +123,8 @@ $.get( "/lists", function(data) {
   for(var index in data) {
     var listData = data[index];
     var createdList = new List(listData.name, listData.id, '.lists');
-    createdList
     createdList.render();
-    createdList.renderChildren(true, true);
+    createdList.refreshChildren();
   }
 });
 
@@ -141,8 +140,10 @@ $('.addtask button').click(function() {
   if(selectedList === null) { return; }
   data = { listId: selectedList.id, taskTitle: $('.addtask input').val() }
   $.post( "/tasks/new", data, function(res) {
+    console.log("posted new task");
     var createdTask = new ListItem(res.title, res.id, res.list_id, res.complete, '.tasks');
-    selectedList.renderChildren(false, false);
+    selectedList.addChild(createdTask);
+    selectedList.renderChildren();
   });
 })
 

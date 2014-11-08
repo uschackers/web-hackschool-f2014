@@ -6,7 +6,7 @@ class TaskDetailsHandler(webapp2.RequestHandler):
   def put(self, task_id):
     task = Task.get_by_id(int(task_id))
     task.title = self.request.get('taskTitle')
-    task.complete = self.request.get('taskComplete') == '1'
+    task.complete = self.request.get('taskComplete') == 'true'
     task.put()
 
     self.response.headers['Content-Type'] = 'application/json'
