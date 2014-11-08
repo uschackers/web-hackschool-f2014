@@ -136,10 +136,11 @@ input[type="text"] {
 }
 
 .list>.name {
-  width: 114px;
+  width: 114px; height: 40px;
   padding-left: 15px;
   position: absolute;
   left: 5px;
+  overflow: hidden;
 }
 
 .list>.close {
@@ -167,7 +168,9 @@ input[type="text"] {
 }
 
 .task .name {
+  height: 40px;
   float: left;
+  overflow: hidden;
 }
 
 .task .complete {
