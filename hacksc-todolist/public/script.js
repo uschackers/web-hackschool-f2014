@@ -41,18 +41,16 @@ var List = function(listName, listID, container) {
       })
     },
     renderChildren: function(force) {
+      var that = this;
       this.unrenderChildren();
       if(force || this.children.length === 0) {
-        childrenData = null;
         $.get( "/lists/" + this.id, function(data) {
-          childrenData = data;
-        });
-        if(childrenData == null) { return; }
-        for(var childIndex in childrenData) {
-          var childData = childrenData[childIndex];
-          var thisChild = newListItem(childData.title, childData.id, childData.list_id, childData.complete, '.tasks');
-          this.children.append(child);
+          for(var childIndex in data) {
+          var childData = data[childIndex];
+          var thisChild = new ListItem(childData.title, childData.id, childData.list_id, childData.complete, '.tasks');
+          that.children.push(thisChild);
         }
+        });
       }
       for(var childIndex in this.children) {
         this.children[childIndex].render();
@@ -82,7 +80,12 @@ var ListItem = function(listItemName, listItemID, parentID, taskCompleted, conta
       $(container).append('<li class="item task" id="task_' + this.id + '"><div class="name">' + this.name + '</div><input type="checkbox" class="complete"></li>');
     },
     setUpHandlers: function() {
-
+      var that = this;
+      $('#task_' + this.id + ' .complete').click(function() {
+        if(that.complete != $('#task_' + that.id + ' .complete').is(':checked')) {
+          
+        }
+      });
     },
     unrender: function() {
       $('#task_' + this.id).remove();
