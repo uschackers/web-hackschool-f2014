@@ -46,7 +46,7 @@ var List = function(listName, listID, container) {
       $.get( "/lists/" + this.id, function(data) {
         for(var childIndex in data) {
           var childData = data[childIndex];
-          var thisChild = new ListItem(childData.title, childData.id, childData.list_id, childData.complete, '.tasks');
+          var thisChild = ListItem(childData.title, childData.id, childData.list_id, childData.complete, '.tasks');
           self.children.push(thisChild);
         }
       });
@@ -122,7 +122,7 @@ selectedList = null;
 $.get( "/lists", function(data) {
   for(var index in data) {
     var listData = data[index];
-    var createdList = new List(listData.name, listData.id, '.lists');
+    var createdList = List(listData.name, listData.id, '.lists');
     createdList.render();
     createdList.refreshChildren();
   }
@@ -131,7 +131,7 @@ $.get( "/lists", function(data) {
 $('.addlist button').click(function() {
   data = { listName: $('.addlist input').val() }
   $.post( "/lists/new", data, function(res) {
-    var createdList = new List(res.name, res.id, '.lists');
+    var createdList = List(res.name, res.id, '.lists');
     createdList.render();
   });
 })
@@ -141,7 +141,7 @@ $('.addtask button').click(function() {
   data = { listId: selectedList.id, taskTitle: $('.addtask input').val() }
   $.post( "/tasks/new", data, function(res) {
     console.log("posted new task");
-    var createdTask = new ListItem(res.title, res.id, res.list_id, res.complete, '.tasks');
+    var createdTask = ListItem(res.title, res.id, res.list_id, res.complete, '.tasks');
     selectedList.addChild(createdTask);
     selectedList.renderChildren();
   });
