@@ -24,7 +24,7 @@ var List = function(listName, listID, container) {
           selectedList.unrenderChildren()
         }
         selectedList = that;
-        selectedList.renderChildren();
+        selectedList.renderChildren(false, false);
       })
       $('#list_' + this.id + ' .close').click(function(e) {
         if(selectedList === $('#list_' + that.id)) {
@@ -40,7 +40,7 @@ var List = function(listName, listID, container) {
         });
       })
     },
-    renderChildren: function(force) {
+    renderChildren: function(force, onLoad) {
       var that = this;
       this.unrenderChildren();
       if(force || this.children.length === 0) {
@@ -48,12 +48,15 @@ var List = function(listName, listID, container) {
           for(var childIndex in data) {
           var childData = data[childIndex];
           var thisChild = new ListItem(childData.title, childData.id, childData.list_id, childData.complete, '.tasks');
+          console.log(thisChild);
           that.children.push(thisChild);
         }
         });
       }
-      for(var childIndex in this.children) {
-        this.children[childIndex].render();
+      if(!onLoad) {
+        for(var childIndex in this.children) {
+          this.children[childIndex].render();
+        }
       }
     },
     unrenderChildren: function() {
@@ -77,18 +80,37 @@ var ListItem = function(listItemName, listItemID, parentID, taskCompleted, conta
 
     },
     render: function() {
+      var that = this;
       $(container).append('<li class="item task" id="task_' + this.id + '"><div class="name">' + this.name + '</div><input type="checkbox" class="complete"></li>');
+      this.setUpHandlers();
+      if(this.completed) {
+        $('#task_' + that.id + ' .complete').attr('checked', true);
+      }
     },
     setUpHandlers: function() {
       var that = this;
       $('#task_' + this.id + ' .complete').click(function() {
-        if(that.complete != $('#task_' + that.id + ' .complete').is(':checked')) {
-          
+        console.log('here');
+        var checked = $('#task_' + that.id + ' .complete').is(':checked');
+        if(that.complete != checked) {
+          that.setCompleted(checked);
         }
       });
     },
     unrender: function() {
       $('#task_' + this.id).remove();
+    },
+    setCompleted: function(checked) {
+      var that = this;
+      $.ajax({
+        url: '/tasks/' + that.id,
+        type: 'PUT',
+        data: { taskTitle: this.name, taskComplete: checked }, 
+        success: function(res) {
+          that.completed = checked;
+          console.log(that);
+        }
+      });
     }
   };
   newListItem.initialize();
@@ -101,7 +123,9 @@ $.get( "/lists", function(data) {
   for(var index in data) {
     var listData = data[index];
     var createdList = new List(listData.name, listData.id, '.lists');
+    createdList
     createdList.render();
+    createdList.renderChildren(true, true);
   }
 });
 
@@ -118,8 +142,7 @@ $('.addtask button').click(function() {
   data = { listId: selectedList.id, taskTitle: $('.addtask input').val() }
   $.post( "/tasks/new", data, function(res) {
     var createdTask = new ListItem(res.title, res.id, res.list_id, res.complete, '.tasks');
-    selectedList.children.push(createdTask);
-    selectedList.renderChildren(false);
+    selectedList.renderChildren(false, false);
   });
 })
 
