@@ -7,7 +7,7 @@ var List = function(listName, listID, container) {
     el: container,
     children: [],
     initialize: function() {
-      
+
     },
     render: function() {
       $(container).append('<li class="item list" id="list_' + this.id + '"><div class="name">' + this.name + '</div><div class="close">&times;</div></li>');
@@ -35,7 +35,7 @@ var List = function(listName, listID, container) {
           url: '/lists/' + that.id,
           type: 'DELETE',
           success: function() {
-            $($('.lists').find('li')[0].find('.name')).click();
+            $('.lists').find('li').find('.name')[0].click();
           }
         });
       })
@@ -76,7 +76,7 @@ var ListItem = function(listItemName, listItemID, parentID, taskCompleted, conta
     completed: taskCompleted,
     el: container,
     initialize: function() {
-      
+
     },
     render: function() {
       $(container).append('<li class="item task" id="task_' + this.id + '"><div class="name">' + this.name + '</div><input type="checkbox" class="complete"></li>');
@@ -121,4 +121,3 @@ $('.addtask button').click(function() {
 })
 
 });
-
